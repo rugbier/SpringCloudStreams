@@ -1,24 +1,33 @@
 package com.example.spring.cloud.clientservice.producer;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 
-@EnableBinding(Source.class)
+@EnableBinding({EmailSource.class, OrderSource.class})
 public class Producer {
 
-	private Source mySource;
+	private EmailSource emailSource;
+	private OrderSource orderSource;
 
-	public Producer(Source mySource) {
+	public Producer(EmailSource emailSource, OrderSource orderSource) {
 		super();
-		this.mySource = mySource;
+		this.emailSource = emailSource;
+		this.orderSource = orderSource;
 	}
 
-	public Source getMysource() {
-		return mySource;
+	public EmailSource getEmailSource() {
+		return emailSource;
 	}
 
-	public void setMysource(Source mysource) {
-		mySource = mysource;
+	public OrderSource getOrderSource() {
+		return orderSource;
+	}
+
+	public void setMysource(EmailSource emailSource) {
+		this.emailSource = emailSource;
+	}
+
+	public void setMysource(OrderSource orderSource) {
+		this.orderSource = orderSource;
 	}
 
 }

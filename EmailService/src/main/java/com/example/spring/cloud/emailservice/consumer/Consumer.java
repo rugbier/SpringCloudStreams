@@ -1,27 +1,21 @@
-package com.example.spring.cloud.emailservice;
+package com.example.spring.cloud.emailservice.consumer;
 
 import java.util.Date;
 
+import com.example.spring.cloud.emailservice.model.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.messaging.handler.annotation.Payload;
 
-@EnableBinding(Sink.class)
+@EnableBinding(EmailSource.class)
 public class Consumer {
 
 	private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
-	@StreamListener(target = Sink.INPUT)
-	public void consume(String message) {
-		logger.info("recieved a string message : " + message);
-	}
-
-	@StreamListener(target = Sink.INPUT, condition = "headers['type']=='client'")
+	@StreamListener(target = EmailSource.EMAIL, condition = "headers['type']=='email'")
 	public void handle(@Payload Client client) {
-
 		logger.info("recieved a client message : [{}]: {}", new Date(), client.toString());
 	}
 

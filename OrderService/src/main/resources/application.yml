@@ -1,3 +1,5 @@
+server:
+  port: 8082
 spring:
   cloud:
     stream:
@@ -8,15 +10,8 @@ spring:
           brokers:
             - localhost:9092
       bindings:
-        email:
-          binder: kafka
-          destination: emailQueue
-          group: emailQueue-group
-          content-type: application/json
         order:
           binder: kafka
           destination: orderQueue
+          content-type: text/plain
           group: orderQueue-group
-          content-type: application/json
-
-

@@ -1,15 +1,13 @@
-package com.example.spring.cloud.emailservice;
+package com.example.spring.cloud.orderservice;
 
-import lombok.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Date;
-
 @SpringBootApplication
-public class EmailServiceApplication {
+public class OrderServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmailServiceApplication.class, args);
+		SpringApplication.run(OrderServiceApplication.class, args);
 	}
+
 }

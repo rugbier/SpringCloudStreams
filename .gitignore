@@ -1,3 +1,7 @@
 *.iml
 ClientService/.idea/
 EmailService/.idea/
+OrderService/.idea/
+OrderService/target/
+EmailService/target/
+ClientService/target/

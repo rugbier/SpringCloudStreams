@@ -16,4 +16,5 @@ public class Client {
 	private String address;
 	private Date birth;
 	private Date creationDate;
+	private Order order;
 }
