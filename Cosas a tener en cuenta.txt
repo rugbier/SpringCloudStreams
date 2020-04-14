@@ -1,0 +1,41 @@
+{
+	"id": 1,
+	"name": "lucas",
+	"surname": "poggi",
+	"email": "un@email.com",
+	"address": "Calle falsa 123",
+	"birth": "1985-01-03",
+	"creationDate": "2020-01-01",
+	"order": {
+		"id": 1,
+		"orderDate": "2020-01-01",
+		"total": 156.24,
+		"totalTaxes": 24.32,
+		"items": [{
+				"id": 1,
+				"name": "Toilet paper",
+				"price": 1.43,
+				"taxes": 0.15,
+				"quantity": 1
+			}, {
+				"id": 2,
+				"name": "Rice",
+				"price": 1.55,
+				"taxes": 0.13,
+				"quantity": 3
+			}, {
+				"id": 3,
+				"name": "Chicken",
+				"price": 1.12,
+				"taxes": 0.12,
+				"quantity": 4
+			}, {
+				"id": 4,
+				"name": "Pork",
+				"price": 1.87,
+				"taxes": 0.11,
+				"quantity": 2
+			}
+		]
+	}
+}
