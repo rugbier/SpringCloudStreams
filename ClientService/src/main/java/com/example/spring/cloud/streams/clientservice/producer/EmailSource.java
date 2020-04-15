@@ -4,9 +4,8 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
 public interface EmailSource {
-
         String EMAIL = "email";
 
         @Output(EMAIL)
-        MessageChannel email();
+        MessageChannel emailChannel();
 }

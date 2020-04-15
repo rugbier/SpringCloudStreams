@@ -1,14 +1,11 @@
-package com.example.spring.cloud.streams.orderservice.model;
+package com.example.spring.cloud.streams.transportdto;
 
 import lombok.*;
-import java.util.Date;
-import java.util.List;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Builder
 public class Item {
     private int id;
     private String name;
@@ -16,3 +13,4 @@ public class Item {
     private double taxes;
     private int quantity;
 }
+

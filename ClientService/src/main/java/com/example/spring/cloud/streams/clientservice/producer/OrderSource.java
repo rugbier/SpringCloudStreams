@@ -8,5 +8,5 @@ public interface OrderSource {
     String ORDER = "order";
 
     @Output(ORDER)
-    MessageChannel order();
+    MessageChannel orderChannel();
 }

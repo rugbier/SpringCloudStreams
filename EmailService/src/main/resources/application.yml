@@ -13,5 +13,5 @@ spring:
         email:
           binder: kafka
           destination: emailQueue
-          content-type: text/plain
+          content-type: application/json
           group: emailQueue-group

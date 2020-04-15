@@ -1,0 +1,8 @@
+com\example\spring\cloud\streams\transportdto\Item$ItemBuilder.class
+com\example\spring\cloud\streams\transportdto\Client$ClientBuilder.class
+com\example\spring\cloud\streams\transportdto\Order$OrderBuilder.class
+com\example\spring\cloud\streams\transportdto\Item.class
+com\example\spring\cloud\streams\transportdto\Client.class
+com\example\spring\cloud\streams\transportdto\Order.class
+com\example\spring\cloud\streams\transportdto\Notification$NotificationBuilder.class
+com\example\spring\cloud\streams\transportdto\Notification.class

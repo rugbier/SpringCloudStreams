@@ -1,14 +1,13 @@
-package com.example.spring.cloud.streams.emailservice.model;
+package com.example.spring.cloud.streams.transportdto;
 
 import lombok.*;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Builder
 public class Client {
     private long id;
     private String name;
@@ -16,5 +15,5 @@ public class Client {
     private String email;
     private String address;
     private Date birth;
-    private Date creationDate;
+    private Order order;
 }

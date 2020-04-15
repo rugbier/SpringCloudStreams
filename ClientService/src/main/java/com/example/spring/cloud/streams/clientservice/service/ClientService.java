@@ -1,53 +1,58 @@
 package com.example.spring.cloud.streams.clientservice.service;
 
-import com.example.spring.cloud.streams.clientservice.utils.Utils;
-import com.example.spring.cloud.streams.clientservice.model.Client;
-import com.example.spring.cloud.streams.clientservice.model.Order;
-import com.example.spring.cloud.streams.clientservice.producer.Producer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.spring.cloud.streams.clientservice.producer.MessageProducer;
+import com.example.spring.cloud.streams.transportdto.Client;
+import com.example.spring.cloud.streams.transportdto.Notification;
+import com.example.spring.cloud.streams.transportdto.Order;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Service
+@Slf4j
+@AllArgsConstructor
 public class ClientService {
-    private Producer producer;
-
-    private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
-
-    public ClientService(Producer producer) {
-        super();
-        this.producer = producer;
-    }
-
+    private MessageProducer messageProducer;
 
     public Client createClient(Client client){
-        client.setCreationDate(Utils.getDate(System.currentTimeMillis()));
         saveClient(client);
-        publishEmail(client);
+        publishEmailNotification(createEmailNotification(client));
         publishOrder(client.getOrder());
-        logger.info("recieved a client message : [{}]: {}", new Date(), client.toString());
+        log.info("Processed client sucessfully : [{}]: {}", new Date(), client.toString());
         return client;
     }
 
+    private Notification createEmailNotification(Client client){
+        return Notification.builder()
+                .id(UUID.randomUUID())
+                .email(client.getEmail())
+                .name(client.getName())
+                .subject("New registration")
+                .message("You have registred as a client into our service.").build();
+    }
+
     private void saveClient(Client client){
-        logger.info("Saving client into DB");
+        log.info("Saving client into DB");
     }
 
     private void publishOrder(Order order){
-            producer.getOrderSource()
-                    .order()
-                    .send(MessageBuilder.withPayload(order)
-                            .setHeader("type", "order")
-                            .build());
+        log.info("Publish Order " + order.getId() +" into stream");
+        messageProducer.getOrderSource()
+                .orderChannel()
+                .send(MessageBuilder.withPayload(order)
+                        .setHeader("type", "order")
+                        .build());
     }
 
-    private void publishEmail(Client client){
-        producer.getEmailSource()
-                .email()
-                .send(MessageBuilder.withPayload(client)
+    private void publishEmailNotification(Notification notification){
+        log.info("Publish Notification " + notification.getId() +" into stream");
+        messageProducer.getEmailSource()
+                .emailChannel()
+                .send(MessageBuilder.withPayload(notification)
                         .setHeader("type", "email")
                         .build());
     }

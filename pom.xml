@@ -12,6 +12,7 @@
         <module>ClientService</module>
         <module>OrderService</module>
         <module>EmailService</module>
+        <module>TransportDTO</module>
     </modules>
 
     <parent>

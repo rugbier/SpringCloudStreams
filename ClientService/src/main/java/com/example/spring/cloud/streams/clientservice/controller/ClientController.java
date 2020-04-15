@@ -1,7 +1,7 @@
 package com.example.spring.cloud.streams.clientservice.controller;
 
-import com.example.spring.cloud.streams.clientservice.model.Client;
 import com.example.spring.cloud.streams.clientservice.service.ClientService;
+import com.example.spring.cloud.streams.transportdto.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
