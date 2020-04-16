@@ -44,7 +44,6 @@ public class ClientService {
         messageProducer.getOrderSource()
                 .orderChannel()
                 .send(MessageBuilder.withPayload(order)
-                        .setHeader("type", "order")
                         .build());
     }
 
@@ -53,7 +52,7 @@ public class ClientService {
         messageProducer.getEmailSource()
                 .emailChannel()
                 .send(MessageBuilder.withPayload(notification)
-                        .setHeader("type", "email")
+                        .setHeader("notificationPriority", "low")
                         .build());
     }
 }

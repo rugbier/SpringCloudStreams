@@ -19,7 +19,7 @@ public class MessageConsumer {
 	@Autowired
 	private OrderService orderService;
 
-	@StreamListener(target = OrderSource.ORDER, condition = "headers['type']=='order'")
+	@StreamListener(target = OrderSource.ORDER)//, condition = "headers['type']=='order'")
 	public void handle(@Payload Order order) {
 		log.info("Recieved an order message : [{}]: {}", new Date(), order.toString());
 		orderService.createOrder(order);

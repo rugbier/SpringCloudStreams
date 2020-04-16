@@ -5,19 +5,12 @@ spring:
       default-binder: kafka
       kafka:
         binder:
-          headers: email, order
           brokers:
             - localhost:9092
       bindings:
-        email:
+        email: #Channel Name
           binder: kafka
-          destination: emailQueue
-          group: emailQueue-group
-          content-type: application/json
+          destination: emailQueue #topic name
         order:
           binder: kafka
           destination: orderQueue
-          group: orderQueue-group
-          content-type: application/json
-
-

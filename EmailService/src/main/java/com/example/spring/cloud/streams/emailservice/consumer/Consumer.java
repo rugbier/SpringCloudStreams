@@ -14,9 +14,14 @@ import org.springframework.messaging.handler.annotation.Payload;
 @EnableBinding(EmailSource.class)
 @Slf4j
 public class Consumer {
-	@StreamListener(target = EmailSource.EMAIL, condition = "headers['type']=='email'")
-	public void handle(@Payload Notification notification) {
-		log.info("Recieved notification message: [{}]: {}", new Date(), notification.toString());
+	@StreamListener(target = EmailSource.EMAIL, condition = "headers['notificationPriority']=='low'")
+	public void handleLowPriorityEmail(@Payload Notification notification) {
+		log.info("LOW PRIORITY NOTIFICATION: Recieved notification message: [{}]: {}", new Date(), notification.toString());
+	}
+
+	@StreamListener(target = EmailSource.EMAIL, condition = "headers['notificationPriority']=='high'")
+	public void handleHighPriorityEmail(@Payload Notification notification) {
+		log.info("HIGH PRIORITY NOTIFICATION: Recieved notification message: [{}]: {}", new Date(), notification.toString());
 	}
 
 }

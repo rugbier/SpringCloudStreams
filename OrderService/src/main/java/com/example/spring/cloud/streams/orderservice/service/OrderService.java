@@ -45,7 +45,7 @@ public class OrderService {
         messageProducer.getNotificationSource()
                 .emailChannel()
                 .send(MessageBuilder.withPayload(notification)
-                        .setHeader("type", "email")
+                        .setHeader("notificationPriority", "high")
                         .build());
     }
 }
